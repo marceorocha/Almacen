@@ -8,8 +8,10 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { Roles } from '../common/decorators/roles.decorator';
 import { UserRole } from '../common/enums/user-role.enum';
+import { User } from '../users/entities/user.entity';
 import { ArticulosService } from './articulos.service';
 import { CreateArticuloDto } from './dto/create-articulo.dto';
 import { UpdateArticuloDto } from './dto/update-articulo.dto';
@@ -20,9 +22,9 @@ export class ArticulosController {
   constructor(private readonly articulosService: ArticulosService) {}
 
   @Post()
-  @Roles(UserRole.ADMIN)
-  create(@Body() dto: CreateArticuloDto): Promise<Articulo> {
-    return this.articulosService.create(dto);
+  @Roles(UserRole.ADMIN, UserRole.ALMACEN)
+  create(@Body() dto: CreateArticuloDto, @CurrentUser() user: User): Promise<Articulo> {
+    return this.articulosService.create(dto, user);
   }
 
   @Get()

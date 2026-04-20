@@ -5,11 +5,12 @@ import {
   Card,
   CardContent,
   Container,
+  Link,
   TextField,
   Typography,
 } from '@mui/material';
 import { useState, type FormEvent } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Link as RouterLink, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
 export function LoginPage() {
@@ -94,6 +95,11 @@ export function LoginPage() {
               >
                 {submitting ? 'Entrando…' : 'Entrar'}
               </Button>
+              <Box sx={{ mt: 2, textAlign: 'center' }}>
+                <Link component={RouterLink} to="/olvido-contrasena" variant="body2">
+                  ¿Olvidaste tu contraseña?
+                </Link>
+              </Box>
             </Box>
           </CardContent>
         </Card>

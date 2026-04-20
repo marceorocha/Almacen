@@ -12,6 +12,7 @@ import { RolesGuard } from './common/guards/roles.guard';
 import databaseConfig from './config/database.config';
 import jwtConfig from './config/jwt.config';
 import { HealthModule } from './health/health.module';
+import { MailModule } from './mail/mail.module';
 import { MovimientosModule } from './movimientos/movimientos.module';
 import { PedidosModule } from './pedidos/pedidos.module';
 import { StockModule } from './stock/stock.module';
@@ -31,6 +32,7 @@ import { UsersModule } from './users/users.module';
         configService.getOrThrow<TypeOrmModuleOptions>('database'),
     }),
     HealthModule,
+    MailModule,
     UsersModule,
     AuthModule,
     AlmacenesModule,

@@ -1,10 +1,13 @@
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 import MenuIcon from '@mui/icons-material/Menu';
 import PeopleIcon from '@mui/icons-material/People';
+import PersonIcon from '@mui/icons-material/Person';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
@@ -40,8 +43,16 @@ interface NavItem {
 function navItems(): NavItem[] {
   return [
     { to: '/', label: 'Dashboard', icon: <DashboardIcon fontSize="small" /> },
+    { to: '/perfil', label: 'Mi cuenta', icon: <PersonIcon fontSize="small" /> },
+    { to: '/almacenes', label: 'Almacenes', icon: <WarehouseIcon fontSize="small" /> },
     { to: '/articulos', label: 'Artículos', icon: <Inventory2Icon fontSize="small" /> },
     { to: '/stock', label: 'Stock', icon: <AssessmentIcon fontSize="small" /> },
+    {
+      to: '/ingreso-mercaderia',
+      label: 'Ingreso mercadería',
+      icon: <MoveToInboxIcon fontSize="small" />,
+      roles: ['admin', 'almacen'],
+    },
     { to: '/movimientos', label: 'Movimientos', icon: <LocalShippingIcon fontSize="small" /> },
     { to: '/transferencias', label: 'Transferencias', icon: <SwapHorizIcon fontSize="small" /> },
     { to: '/pedidos', label: 'Pedidos', icon: <ShoppingCartIcon fontSize="small" /> },

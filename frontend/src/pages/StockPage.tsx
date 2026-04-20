@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { api } from '@/api/client';
+import { formatQuantityDisplay } from '@/utils/formatQuantity';
 
 interface StockRow {
   id: string;
@@ -78,8 +79,8 @@ export function StockPage() {
                 <TableCell>
                   {r.articulo?.codigoInterno ?? '—'} — {r.articulo?.descripcion ?? ''}
                 </TableCell>
-                <TableCell align="right">{r.cantidad}</TableCell>
-                <TableCell align="right">{r.reservado}</TableCell>
+                <TableCell align="right">{formatQuantityDisplay(r.cantidad)}</TableCell>
+                <TableCell align="right">{formatQuantityDisplay(r.reservado)}</TableCell>
                 <TableCell>{r.almacenId}</TableCell>
               </TableRow>
             ))}
